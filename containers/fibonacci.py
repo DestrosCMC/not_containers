@@ -60,9 +60,9 @@ class Fib:
     >>> list(Fib(5))
     [1, 1, 2, 3, 5]
     '''
-    def __init__(self,n = None):
+    def __init__(self, n=None):
         self.n = n
-    
+
     def __repr__(self):
         if self.n is not None:
             rep = f'Fib({self.n})'
@@ -70,7 +70,9 @@ class Fib:
             rep = "Fib()"
         return rep
     def __iter__(self):
+
         return FibIter(self.n)
+
 
 class FibIter:
     '''
@@ -93,6 +95,7 @@ class FibIter:
             self.a, self.b = self.b, self.a + self.b
             return yo
 
+
 def fib_yield(n=None):
     '''
     This function returns a generator that computes the first n fibonacci numbers.
@@ -100,6 +103,6 @@ def fib_yield(n=None):
     '''
     a, b = 1, 1
     if n is not None:
-        for i in range(1, n+1):
+        for i in range(1, n + 1):
             yield a
             a, b = b, a + b
