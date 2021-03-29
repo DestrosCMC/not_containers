@@ -21,11 +21,12 @@ def range(a, b=None, c=None):
             yield current
             current += add
             place += add
+
     if b is not None and c is not None:
         if b > 0 and c < 0:
             return []
 
-    else:
+    if b:
         if b > 0:
             current = a
             while current < b:
