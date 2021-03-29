@@ -83,14 +83,18 @@ class FibIter:
 
     def __next__(self):
         if self.n is None:
-            return 1
-        if self.n <= self.i:
-            raise StopIteration
-        else:
-            self.i += 1
             yo = self.a
             self.a, self.b = self.b, self.a + self.b
             return yo
+
+        if self.n is not None:
+            if self.n <= self.i:
+                raise StopIteration
+            else:
+                self.i += 1
+                yo = self.a
+                self.a, self.b = self.b, self.a + self.b
+                return yo
 
 
 def fib_yield(n=None):
