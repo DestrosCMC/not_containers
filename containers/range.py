@@ -22,7 +22,13 @@ def range(a, b=None, c=None):
             current += add
             place += add
     else:
-        current = a
-        while current < b:
-            yield current
-            current += add
+        if b > 0:
+            current = a
+            while current < b:
+                yield current
+                current += add
+        else:
+            current = a
+            while current > b:
+                yield current
+                current += add
