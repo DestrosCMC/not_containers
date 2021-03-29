@@ -23,10 +23,14 @@ def range(a, b=None, c=None):
             place += add
     else:
         if b > 0:
-            current = a
-            while current < b:
-                yield current
-                current += add
+            if c > 0:
+                current = a
+                while current < b:
+                    yield current
+                    current += add
+            else:
+                return []
+
         else:
             current = a
             while current > b:
