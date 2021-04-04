@@ -31,8 +31,8 @@ class NormalizedStr:
         that can be substituted directly into the python interpreter
         to reproduce an equivalent object.
         '''
-        reprHelp = unicodedata.normalize(self.normal_form, self.text)
-        return f"NormalizedStr('{reprHelp}', '{self.normal_form}')"
+        reprhelp = unicodedata.normalize(self.normal_form, self.text)
+        return f"NormalizedStr('{reprhelp}', '{self.normal_form}')"
 
     def __str__(self):
         '''
