@@ -12,7 +12,8 @@ class NormalizedStr:
     >>> 'César' in 'César Chávez'
     False
 
-    The two strings to the right of the in keyword above are equal *semantically*,
+    The two strings to the right of the in keyword
+    above are equal *semantically*,
     but not equal *representationally*.
     In particular, the first is in NFC form, and the second is in NFD form.
     The purpose of this class is to automatically normalize our strings for us,
@@ -25,15 +26,19 @@ class NormalizedStr:
 
     def __repr__(self):
         '''
-        The string returned by the __repr__ function should be valid python code
-        that can be substituted directly into the python interpreter to reproduce an equivalent object.
+        The string returned by the __repr__ function
+        should be valid python code
+        that can be substituted directly into the python interpreter
+        to reproduce an equivalent object.
         '''
         return f"NormalizedStr('{self.text}', '{self.normal_form}')"
 
     def __str__(self):
         '''
-        This functions converts the NormalizedStr into a regular string object.
-        The output is similar, but not exactly the same, as the __repr__ function.
+        This functions converts the NormalizedStr into
+        a regular string object.
+        The output is similar, but not exactly the same,
+        as the __repr__ function.
         '''
         return unicodedata.normalize(self.normal_form, self.text)
 
@@ -50,11 +55,14 @@ class NormalizedStr:
         The expression `a in b` desugars to `b.__contains__(a)`.
 
         HINT:
-        You should normalize the `substr` variable to ensure that the comparison is done semantically and not syntactically.
+        You should normalize the `substr` variable
+        to ensure that the comparison is done
+        semantically and not syntactically.
         '''
         self.substr = substr
         self.substr = unicodedata.normalize(self.normal_form, self.substr)
-        return self.substr in unicodedata.normalize(self.normal_form, self.text)
+        return self.substr in unicodedata.normalize(self.normal_form,
+                                                    self.text)
 
     def __getitem__(self, index):
         '''
@@ -82,7 +90,8 @@ class NormalizedStr:
         The expression `a + b` gets desugared into `a.__add__(b)`.
 
         HINT:
-        The addition of two normalized strings is not guaranteed to stay normalized.
+        The addition of two normalized strings is not
+        guaranteed to stay normalized.
         Therefore, you must renormalize the strings after adding them together.
         '''
         self.b = b
@@ -90,22 +99,26 @@ class NormalizedStr:
         self.b = unicodedata.normalize(self.normal_form, str(self.b))
 
         self.combined = self.copy + self.b
-        self.normCombined = unicodedata.normalize(self.normal_form, self.combined)
-        return NormalizedStr(self.normCombined)
+        self.normComb = unicodedata.normalize(self.normal_form, self.combined)
+        return NormalizedStr(self.normComb)
 
     def __iter__(self):
         '''
         HINT:
-        Recall that the __iter__ method returns a class, which is the iterator object.
-        You'll need to define your own iterator class with the appropriate magic methods,
+        Recall that the __iter__ method returns a class, which is the
+        iterator object.
+        You'll need to define your own iterator class with the appropriate
+        magic methods,
         and return an instance of that class here.
         '''
         self.normText = unicodedata.normalize(self.normal_form, self.text)
 
         return NormalizedStrIter(self.normText, len(self.normText))
 
+
 class NormalizedStrIter:
     '''
+    NormalizedStr Iterator Helper Function
     '''
     def __init__(self, text, n):
         self.text = text
@@ -114,6 +127,7 @@ class NormalizedStrIter:
 
     def __next__(self):
         '''
+        Returns the next item in the list
         '''
         while self.i < self.n:
             self.i += 1
