@@ -109,35 +109,63 @@ class BinaryTree():
         but instead of printing the tree,
         it returns the contents of the tree as a list.
 
-        A general programming principle is that a function should return its results
+        A general programming principle is that a function should
+        return its results
         rather than print them whenever possible.
         If a function returns its results,
-        we can always print the returned results if we need to visualize them.
-        But by returning the results we can also do more computations on the results if needed.
-        Many of the test cases for more complicated tree functions rely on this to_list function,
+        we can always print the returned results if we need to
+        visualize them.
+        But by returning the results we can also do
+        more computations on the results if needed.
+        Many of the test cases for more complicated
+        tree functions rely on this to_list function,
         so it is import to implement it correctly.
 
         FIXME:
-        Implement this function by modifying the _print functions above.
+        Implement this function by modifying the
+        _print functions above.
         '''
+        if traversal_type == 'inorder':
+            return self.inorder_print(self.root, [])
+        
+        if traversal_type == 'preorder':
+            return self.preorder_print(self.root, [])
+        
+        if traversal_type == 'postorder':
+            return self.postorder_print(self.root, [])
 
     def preorder(self, start, traversal):
         '''
         FIXME:
         Implement this function by modifying the _print functions above.
         '''
+        if start:
+            traversal = traversal.append(start.value)
+            traversal = self.preorder(start.left, traversal)
+            traversal = self.preorder(start.right, traversal)
+        return traversal
 
     def inorder(self, start, traversal):
         '''
         FIXME:
         Implement this function by modifying the _print functions above.
         '''
+        if start:
+            traversal = self.inorder(start.left, traversal)
+            traversal = traversal.append(start.value)
+            traversal = self.inorder(start.right, traversal)
+        return traversal
 
     def postorder(self, start, traversal):
         '''
         FIXME:
         Implement this function by modifying the _print functions above.
         '''
+        if start:
+            traversal = self.postorder(start.left, traversal)
+            traversal = self.postorder(start.right, traversal)
+            traversal = traversal.append(start.value)
+        return traversal
 
     def __len__(self):
         '''
@@ -152,7 +180,11 @@ class BinaryTree():
         FIXME:
         Implement this function.
         '''
-
+        if not node:
+            return 0
+        else:
+            return 1 + self.__len__helper(node.right) + self.__len__helper(node.left)
+    
     def height(self):
         '''
         Returns the height of the tree.
@@ -164,6 +196,7 @@ class BinaryTree():
         HINT:
         See how the __len__ method calls its helper staticmethod.
         '''
+        return BinaryTree._height(self.root)
 
     @staticmethod
     def _height(node):
@@ -171,3 +204,10 @@ class BinaryTree():
         FIXME:
         Implement this function.
         '''
+        if not node:
+            return -1
+
+        left_h = self._height(node.left)
+        right_h = self.height(node.right)
+
+        return 1 + max (left_h, right_)
