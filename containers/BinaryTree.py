@@ -132,13 +132,13 @@ class BinaryTree():
         _print functions above.
         '''
         if traversal_type == 'inorder':
-            return self.inorder_print(self.root, [])
+            return self.inorder(self.root, [])
 
         if traversal_type == 'preorder':
-            return self.preorder_print(self.root, [])
+            return self.preorder(self.root, [])
 
         if traversal_type == 'postorder':
-            return self.postorder_print(self.root, [])
+            return self.postorder(self.root, [])
 
     def preorder(self, start, traversal):
         '''
