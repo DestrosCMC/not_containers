@@ -224,11 +224,11 @@ class BST(BinaryTree):
         if not node:
             return node
 
-        if node.value < value:
-            node.right = BST._remove(node.right, value)
-
         if node.value > value:
             node.left = BST._remove(node.left, value)
+
+        if node.value < value:
+            node.right = BST._remove(node.right, value)
 
         else:
             if not node.left:
