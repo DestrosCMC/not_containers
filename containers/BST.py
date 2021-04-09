@@ -23,7 +23,7 @@ class BST(BinaryTree):
         '''
         self.root = None
         if xs:
-            self.inser_list(xs)
+            self.insert_list(xs)
 
     def __repr__(self):
         '''
