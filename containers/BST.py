@@ -21,6 +21,7 @@ class BST(BinaryTree):
         If xs is a list (i.e. xs is not None),
         then each element of xs needs to be inserted into the BST.
         '''
+        self.root = None
         if xs:
             self.inser_list(xs)
 
