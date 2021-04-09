@@ -68,10 +68,10 @@ class BST(BinaryTree):
 
         if node.left:
             left = node.value > node.left.value and\
-                    BST._is_bst_satisfied(node.left)
+                BST._is_bst_satisfied(node.left)
         if node.right:
             right = node.value < node.right.value and\
-                    BST._is_bst_satisfied(node.right)
+                BST._is_bst_satisfied(node.right)
 
         return right and left
 
@@ -194,6 +194,7 @@ class BST(BinaryTree):
         else:
             return None
 
+    @staticmethod
     def _find_largest(node):
         if not node.right:
             return node.value
