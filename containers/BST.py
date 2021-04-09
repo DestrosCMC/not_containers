@@ -175,7 +175,7 @@ class BST(BinaryTree):
 
     @staticmethod
     def _find_smallest(node):
-        if not Node.left:
+        if not node.left:
             return node.value
         else:
             return BST._find_smallest(node.left)
@@ -222,7 +222,7 @@ class BST(BinaryTree):
     @staticmethod
     def _remove(node, value):
         if not node:
-            return None
+            return node
 
         if node.value < value:
             node.right = BST._remove(node.right, value)
