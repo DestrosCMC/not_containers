@@ -43,6 +43,36 @@ class AVLTree():
             return 0
         return BinaryTree._height(node.left) - BinaryTree._height(node.right)
 
+    def is_bst_satisfied(self):
+        '''
+        Whenever you implement a data structure,
+        the first thing to do is to implement a function that checks whether
+        the structure obeys all of its laws.
+        This makes it possible to automatically
+        test whether insert/delete functions
+        are actually working.
+        '''
+        if self.root:
+            return BST._is_bst_satisfied(self.root)
+        return True
+
+    @staticmethod
+    def _is_bst_satisfied(node):
+        '''
+        FIXME:
+        Implement this method.
+        '''
+        left, right = True, True
+
+        if node.left:
+            left = node.value > node.left.value and\
+                BST._is_bst_satisfied(node.left)
+        if node.right:
+            right = node.value < node.right.value and\
+                BST._is_bst_satisfied(node.right)
+
+        return right and left
+    
     def is_avl_satisfied(self):
         '''
         Returns True if the avl tree satisfies that all nodes
