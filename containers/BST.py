@@ -82,16 +82,18 @@ class BST(BinaryTree):
         FIXME:
         Implement this method.
         '''
-        left1, right1 = True, True
-
+        ret = True
         if node.left:
-            left1 = node.value > node.left.value and\
-                BST._is_bst_satisfied(node.left)
+            if node.value >= BST._find_largest(node.left):
+                ret &= BST._is_bst_satisfied(node.left)
+            else:
+                ret = False
         if node.right:
-            right1 = node.value < node.right.value and\
-                BST._is_bst_satisfied(node.right)
-
-        return right1 and left1
+            if node.value <= BST._find_smallest(node.right):
+                ret &= BST._is_bst_satisfied(node.right)
+            else:
+                ret = False
+        return ret
 
     def insert(self, value):
         '''
