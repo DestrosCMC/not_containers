@@ -58,28 +58,10 @@ class BST(BinaryTree):
         Convert the contents of both trees into a sorted list,
         then compare those sorted lists for equality.
         '''
-        def list_elements(node):
-            lst = []
-            if not node.root:
-                return lst
-            lst = lst.append(node.value)
-            if node.left:
-                lst.append(list_elements(node.left))
-            if node.right:
-                lst.append(list_elements(node.right))
-            return lst
+        list1 = self.to_list('inorder')
+        list2 = self.to_list('inorder')
 
-        def flatten(lis):
-            from collections.abc import Iterable
-            for item in lis:
-                if isinstance(item, Iterable) and not isinstance(item, str):
-                    for x in flatten(item):
-                        yield x
-                else:
-                    yield item
-        a = list(flatten(list_elements(self)))
-        b = list(flatten(list_elements(t2)))
-        return sorted(a) == sorted(b)
+        return sorted(list1) == sorted(list2)
 
     def is_bst_satisfied(self):
         '''
