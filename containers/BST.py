@@ -60,7 +60,7 @@ class BST(BinaryTree):
         '''
         def list_elements(node):
             lst = []
-            if not node.value:
+            if not node.root:
                 return lst
             lst = lst.append(node.value)
             if node.left:
