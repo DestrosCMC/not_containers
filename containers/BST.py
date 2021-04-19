@@ -59,7 +59,8 @@ class BST(BinaryTree):
         then compare those sorted lists for equality.
         '''
         def list_elements(node):
-            lst = [node.value]
+            lst = []
+            lst = lst.append(node.value)
             if node.left:
                 lst.append(list_elements(node.left))
             if node.right:
@@ -201,7 +202,8 @@ class BST(BinaryTree):
     @staticmethod
     def _find_smallest(node):
         '''
-        This is a helper function for find_smallest and not intended to be called directly by the user.
+        This is a helper function for find_smallest
+        and not intended to be called directly by the user.
         '''
         if not node.left:
             return node.value
@@ -239,7 +241,8 @@ class BST(BinaryTree):
         Implement this function.
 
         HINT:
-        You should have everything else working before you implement this function.
+        You should have everything else working before
+        you implement this function.
 
         HINT:
         Use a recursive helper function.
