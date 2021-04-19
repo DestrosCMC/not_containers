@@ -7,7 +7,7 @@ but there are fewer of them.
 
 from containers.BinaryTree import BinaryTree, Node
 
-# from containers.BST import BST
+from containers.BST import BST
 
 
 class AVLTree():
@@ -72,7 +72,7 @@ class AVLTree():
                 BST._is_bst_satisfied(node.right)
 
         return right and left
-    
+
     def is_avl_satisfied(self):
         '''
         Returns True if the avl tree satisfies that all nodes

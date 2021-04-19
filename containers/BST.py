@@ -58,6 +58,26 @@ class BST(BinaryTree):
         Convert the contents of both trees into a sorted list,
         then compare those sorted lists for equality.
         '''
+        def list_elements(node):
+            lst = [node.value]
+            if node.left:
+                lst.append(list_elements(node.left))
+            if node.right:
+                lst.append(list_elements(node.right))
+            return lst
+
+        def flatten(lis):
+            from collections.abc import Iterable
+            for item in lis:
+                if isinstance(item, Iterable) and not isinstnace(item,str):
+                    for x in flatten(item):
+                        yield x
+                else:
+                    yield item
+        a = list(flatten(list_elements(self)))
+        b = list(flatten(list_elements(t2)))
+        return sorted(a) == sorted(b)
+
 
     def is_bst_satisfied(self):
         '''
@@ -78,16 +98,16 @@ class BST(BinaryTree):
         FIXME:
         Implement this method.
         '''
-        left, right = True, True
+        left1, right1 = True, True
 
         if node.left:
-            left = node.value > node.left.value and\
+            left1 = node.value > node.left.value and\
                 BST._is_bst_satisfied(node.left)
         if node.right:
-            right = node.value < node.right.value and\
+            right1 = node.value < node.right.value and\
                 BST._is_bst_satisfied(node.right)
 
-        return right and left
+        return right1 and left1
 
     def insert(self, value):
         '''
