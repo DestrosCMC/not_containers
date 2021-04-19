@@ -7,9 +7,6 @@ but there are fewer of them.
 
 from containers.BinaryTree import BinaryTree, Node
 
-
-
-
 class AVLTree():
     '''
     FIXME:
