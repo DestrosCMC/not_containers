@@ -69,7 +69,7 @@ class BST(BinaryTree):
         def flatten(lis):
             from collections.abc import Iterable
             for item in lis:
-                if isinstance(item, Iterable) and not isinstnace(item,str):
+                if isinstance(item, Iterable) and not isinstance(item, str):
                     for x in flatten(item):
                         yield x
                 else:
@@ -77,7 +77,6 @@ class BST(BinaryTree):
         a = list(flatten(list_elements(self)))
         b = list(flatten(list_elements(t2)))
         return sorted(a) == sorted(b)
-
 
     def is_bst_satisfied(self):
         '''
