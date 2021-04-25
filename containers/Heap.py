@@ -110,8 +110,8 @@ class Heap(BinaryTree):
         Inserts value into the heap.
         '''
         if self.root:
-            nodes = self.__len__()
-            route = "{0:b}".format(nodes + 1)[1:]
+            nodess = self.__len__()
+            route = "{0:b}".format(nodess + 1)[1:]
             self.root = Heap._insert(self.root, value, route)
         else:
             self.root = Node(value)
@@ -181,35 +181,29 @@ class Heap(BinaryTree):
                 self.root, remove_path)
             if self.root:
                 self.root.value = last_val
-            print(str(self.root))
             self.root = Heap._trickle(self.root)
 
     @staticmethod
-    def _remove_bottom_right(node, remove_path):
-        '''
-        Helper function to remove_min.
-        Returns bottom right element in the tree as well as a modified tree
-        with the bottom right node deleted.
-        '''
-        deleted_value = ""
-        if len(remove_path) == 0:
+    def _remove_bottom_right(node, route):
+        deleted = ""
+        if len(route) == 0:
             return None, None
-        if remove_path[0] == '0':
-            if len(remove_path) == 1:
-                deleted_value = node.left.value
+        if route[0] == '0':
+            if len(route) == 1:
+                deleted = node.left.value
                 node.left = None
             else:
-                deleted_value, node.left = Heap._remove_bottom_right(
-                    node.left, remove_path[1:])
-        if remove_path[0] == '1':
-            if len(remove_path) == 1:
-                deleted_value = node.right.value
+                deleted, node.left = Heap._remove_bottom_right(
+                    node.left, route[1:])
+        if route[0] == '1':
+            if len(route) == 1:
+                deleted = node.right.value
                 node.right = None
             else:
-                deleted_value, node.right = Heap._remove_bottom_right(
-                    node.right, remove_path[1:])
-        return deleted_value, node
-
+                deleted, node.right = Heap._remove_bottom_right(
+                    node.right, route[1:])
+        return deleted, node
+    
     @staticmethod
     def _trickle(node):
         if Heap._is_heap_satisfied(node):
