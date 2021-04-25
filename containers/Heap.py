@@ -203,7 +203,7 @@ class Heap(BinaryTree):
                 deleted, node.right = Heap._remove_bottom_right(
                     node.right, route[1:])
         return deleted, node
-    
+
     @staticmethod
     def _trickle(node):
         if Heap._is_heap_satisfied(node):
