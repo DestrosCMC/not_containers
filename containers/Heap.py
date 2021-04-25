@@ -133,12 +133,21 @@ class Heap(BinaryTree):
         if route[0] == '0':
             if node.left.value < node.value:
                 temp = node.value
+                node.value = node.left.value
+                node.left.value = temp
+                return node
+            else:
+                return node
+        
+        if route[0] == '1':
+            if node.right.value < node.value:
+                temp = node.value
                 node.value = node.right.value
                 node.right.value = temp
                 return node
             else:
                 return node
-
+       
     def insert_list(self, xs):
         '''
         Given a list xs, insert each element of xs into self.
