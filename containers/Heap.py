@@ -110,9 +110,9 @@ class Heap(BinaryTree):
         Inserts value into the heap.
         '''
         if self.root:
-            nodess = self.__len__()
-            route = "{0:b}".format(nodess + 1)[1:]
-            self.root = Heap._insert(self.root, value, route)
+            num_nodes = self.__len__()
+            insert_path = "{0:b}".format(num_nodes + 1)[1:]
+            self.root = Heap._insert(self.root, value, insert_path)
         else:
             self.root = Node(value)
 
