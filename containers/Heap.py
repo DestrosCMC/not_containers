@@ -168,7 +168,7 @@ class Heap(BinaryTree):
         else:
             nodes = self.__len__()
             route = "{0:b}".format(nodes + 1)[1:]
-            last, self.root = Heap._remove_botton_right(self.root, route)
+            last, self.root = Heap._remove_bottom_right(self.root, route)
             if self.root:
                 self.root.value = last
             print(str(self.root))
