@@ -180,7 +180,6 @@ class Heap(BinaryTree):
             last, self.root = Heap._remove_bottom_right(self.root, route)
             if self.root:
                 self.root.value = last
-            print(str(self.root))
             self.root = Heap._trickle(self.root)
 
     @staticmethod
@@ -202,7 +201,6 @@ class Heap(BinaryTree):
             else:
                 deleted, node.right = Heap._remove_bottom_right(
                     node.right, route[1:])
-        print(deleted, str(node))
         return deleted, node
 
     @staticmethod
