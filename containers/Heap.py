@@ -175,11 +175,13 @@ class Heap(BinaryTree):
         if not self.root:
             pass
         else:
-            nodes = self.__len__()
-            route = "{0:b}".format(nodes)[1:]
-            last, self.root = Heap._remove_bottom_right(self.root, route)
+            num_nodes = self.__len__()
+            remove_path = "{0:b}".format(num_nodes)[1:]
+            last_val, self.root = Heap._remove_bottom_right(
+                self.root, remove_path)
             if self.root:
-                self.root.value = last
+                self.root.value = last_val
+            print(str(self.root))
             self.root = Heap._trickle(self.root)
 
     @staticmethod
