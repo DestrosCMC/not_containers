@@ -29,7 +29,7 @@ class Heap(BinaryTree):
         then each element of xs needs to be inserted into the Heap.
         '''
         super().__init__()
-        if xs:
+        if xs is not None:
             self.insert_list(xs)
 
     def __repr__(self):
