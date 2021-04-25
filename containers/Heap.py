@@ -117,20 +117,21 @@ class Heap(BinaryTree):
             self.root = Node(value)
 
     @staticmethod
-    def _insert(node, value, route):
-        if route[0] == '0':
+    def _insert(node, value, insert_path):
+        '''
+        Helper function for insert
+        '''
+        if insert_path[0] == '0':
             if not node.left:
                 node.left = Node(value)
             else:
-                node.left = Heap._insert(node.left, value, route[1:])
-
-        if route[0] == '1':
+                node.left = Heap._insert(node.left, value, insert_path[1:])
+        if insert_path[0] == '1':
             if not node.right:
                 node.right = Node(value)
             else:
-                node.right = Heap._insert(node.right, value, route[1:])
-
-        if route[0] == '0':
+                node.right = Heap._insert(node.right, value, insert_path[1:])
+        if insert_path[0] == '0':
             if node.left.value < node.value:
                 temp = node.value
                 node.value = node.left.value
@@ -138,8 +139,7 @@ class Heap(BinaryTree):
                 return node
             else:
                 return node
-
-        if route[0] == '1':
+        if insert_path[0] == '1':
             if node.right.value < node.value:
                 temp = node.value
                 node.value = node.right.value
