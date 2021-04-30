@@ -1,4 +1,7 @@
-# containers
+# Data Structures Implemented
+## CMC CSCI-046 HW
+
+This package is a project that was done for Data Structure and Algorithms homework.
 
 Build status:
 
